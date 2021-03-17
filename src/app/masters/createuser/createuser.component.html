@@ -1,0 +1,57 @@
+<div class="main-content">
+ 
+  <nav aria-label="breadcrumb" style="margin-left: 1%;">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/users']">Home</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/users']">Users</a></li>
+
+      <li class="breadcrumb-item active" aria-current="page"> Create User</li>
+    </ol>
+  </nav>
+  <div>
+  <h2 class="text-warning ml-3">Create User</h2>
+  </div>
+  
+  <form #userForm ="ngForm"  (ngSubmit)="userForm.valid && sub(userForm.value)" >
+    <div class="card shadow">
+
+      <div class="row mt-4 container">
+       <div class="col-md-8">
+             <h5 class="text-primary font-weight-bold">UserName</h5> 
+            <input name="username" required #username ="ngModel" type="text" maxlength="50" class="form-control" placeholder="Enter the username" [(ngModel)]="data.userName"><br>
+            <label *ngIf="userForm.submitted && username.errors?.required" class="text-danger">username is required</label> 
+        </div>
+          <div class="col-md-8">
+            <h5 class="text-primary font-weight-bold">Email</h5>
+            <input name="email" required #email ="ngModel" type="email" maxlength="50" [class.is-invalid]= "email.invalid  && email.touched" class="form-control col-md-6" placeholder="Enter the email" [(ngModel)]="data.email">
+            <label class="text-danger" *ngIf="userForm.submitted && email.errors?.required" >email is required</label>   
+          </div>
+          <div class="col-md-8">
+            <h5 class="text-primary font-weight-bold">Phone</h5>
+            <input name="phone" required #phone ="ngModel" minlength="10" maxlength="10" type="text" [class.is-invalid]= "phone.invalid  && phone.touched" class="form-control col-md-6" placeholder="Enter the phone" [(ngModel)]="data.phone">
+            <label class="text-danger" *ngIf="userForm.submitted && phone.errors?.required" >phone is required</label>   
+          </div>
+          <div class="col-md-8">
+            <h5 class="text-primary font-weight-bold">Gender</h5>
+            <input name="gender" required #gender ="ngModel" minlength="1" type="email" [class.is-invalid]= "gender.invalid  && gender.touched" class="form-control col-md-6" placeholder="Enter the gender" [(ngModel)]="data.gender">
+            <label class="text-danger" *ngIf="userForm.submitted && gender.errors?.required" >gender is required</label>   
+          </div>
+          <div class="col-md-8">
+            <h5 class="text-primary font-weight-bold">Age</h5>
+            <input name="age" required #age ="ngModel" type="number" [class.is-invalid]= "age.invalid  && age.touched" class="form-control col-md-6" placeholder="Enter the age" [(ngModel)]="data.age">
+            <label class="text-danger" *ngIf="userForm.submitted && age.errors?.required" >age is required</label>   
+          </div>
+        </div>
+      
+     
+     <div class="mt-3 mb-4 ml-auto mr-auto">
+      <button class="btn btn-success shadow rounded-pill" type="submit">Create User</button>
+     </div>
+    </div>
+  </form>
+
+    </div>
+
+
+
+
